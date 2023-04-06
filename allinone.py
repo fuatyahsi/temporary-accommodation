@@ -22,7 +22,7 @@ html_temp = """
 <div style="background-color:blue;padding:1px">
 <h3 style="color:white;text-align:center;">Konteynerkent Planlama </h3>
 </div>"""
-st.image(img, caption="BARINMA VE YAPIM İŞLERİ GENEL MÜDÜRLÜĞÜ",clamp=False)
+st.image(img, caption="***************",clamp=False)
 st.markdown(html_temp, unsafe_allow_html=True)
 st.markdown("####  ")
 
@@ -131,7 +131,7 @@ else:
     folium_static(location, width=700, height=400)
     st.table(target.groupby(["il","ilce"])["planlanan_konteyner_sayisi"].sum().reset_index())
     
-import streamlit as st
+
 
 
     
