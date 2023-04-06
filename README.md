@@ -1,1 +1,1 @@
-# temporary-accommodation; deployed by streamlit, used unsupervised learning ; KMEANS clustering
+# temporary-accommodation; deployed via streamlit, used unsupervised learning ; KMEANS clustering
