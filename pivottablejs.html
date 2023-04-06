@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PivotTable.js</title>
+
+        <!-- external libs from cdnjs -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/pivot.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/pivot.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/d3_renderers.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/c3_renderers.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.19.0/export_renderers.min.js"></script>
+
+        <style>
+            body {font-family: Verdana;}
+            .node {
+              border: solid 1px white;
+              font: 10px sans-serif;
+              line-height: 12px;
+              overflow: hidden;
+              position: absolute;
+              text-indent: 2px;
+            }
+            .c3-line, .c3-focused {stroke-width: 3px !important;}
+            .c3-bar {stroke: white !important; stroke-width: 1;}
+            .c3 text { font-size: 12px; color: grey;}
+            .tick line {stroke: white;}
+            .c3-axis path {stroke: grey;}
+            .c3-circle { opacity: 1 !important; }
+            .c3-xgrid-focus {visibility: hidden !important;}
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            $(function(){
+                if(window.location != window.parent.location)
+                    $("<a>", {target:"_blank", href:""})
+                        .text("[pop out]").prependTo($("body"));
+
+                $("#output").pivotUI(
+                    $.csv.toArrays($("#output").text()),
+                    $.extend({
+                        renderers: $.extend(
+                            $.pivotUtilities.renderers,
+                            $.pivotUtilities.c3_renderers,
+                            $.pivotUtilities.d3_renderers,
+                            $.pivotUtilities.export_renderers
+                            ),
+                        hiddenAttributes: [""]
+                    }, {})
+                ).show();
+             });
+        </script>
+        <div id="output" style="display: none;">,il,ilce,planlanan_konteyner_sayisi,coor_x,coor_y
+0,Adana,Cukurova,505,37.045443,35.187438
+1,Diyarbakir,Kayapinar,1000,37.986645,40.133975
+2,Gaziantep,Islahiye,1014,36.898359,36.583331
+3,Gaziantep,Islahiye,1300,37.007989,36.617385
+4,Gaziantep,Islahiye,276,37.03079,36.642439
+5,Gaziantep,Islahiye,200,37.030758,36.642366
+6,Gaziantep,Islahiye,70,36.62847,37.04577
+7,Gaziantep,Islahiye,483,36.990743,36.616062
+8,Gaziantep,Islahiye,70,36.984141,36.615165
+9,Gaziantep,Islahiye,100,36.6473,37.0189
+10,Gaziantep,Islahiye,50,36.6476,37.0205
+11,Gaziantep,Islahiye,2539,37.009596,36.673238
+12,Gaziantep,Islahiye,118,37.026788,36.619134
+13,Gaziantep,Nurdagi,1280,37.173315,36.722321
+14,Gaziantep,Nurdagi,500,37.188481,36.745132
+15,Gaziantep,Nurdagi,520,37.18495,36.759189
+16,Gaziantep,Nurdagi,1750,37.176943,36.725451
+17,Gaziantep,Nurdagi,472,37.172876,36.721707
+18,Gaziantep,Nurdagi,2341,37.163596,36.757101
+19,Gaziantep,Nizip,908,37.041759,37.904905
+20,Gaziantep,Islahiye,100,37.007985,36.627905
+21,Gaziantep,Sehitkamil,266,37.174286,37.130894
+22,Kilis,Merkez,500,36.705033,37.11704
+23,Malatya,Yesilyurt,2000,38.339169,38.156405
+24,Malatya,Battalgazi,2144,38.341274,38.435444
+25,Malatya,Yesilyurt,719,38.317289,38.222755
+26,Malatya,Battalgazi,194,38.361298,38.33016
+27,Malatya,Yesilyurt,868,38.334336,38.248448
+28,Malatya,Yesilyurt,141,38.331813,38.213724
+29,Malatya,Yesilyurt,76,38.326072,38.247511
+30,Malatya,Dogansehir,285,38.105076,37.911571
+31,Malatya,Yesilyurt,140,38.301385,38.227427
+32,Malatya,Yesilyurt,100,38.289106,38.264703
+33,Malatya,Yesilyurt,150,38.35564,38.196328
+34,Malatya,Akcadag,80,38.254907,37.928667
+35,Malatya,Battalgazi,120,38.352782,38.341315
+36,Malatya,Akcadag,25,38.346849,37.964948
+37,Malatya,Akcadag,50,38.328991,38.026703
+38,Malatya,Akcadag,308,38.35722,37.978345
+39,Malatya,Akcadag,50,38.389774,38.080612
+40,Malatya,Yesilyurt,330,38.337573,38.231809
+41,Malatya,Dogansehir,180,37.926886,37.945393
+42,Malatya,Dogansehir,250,37.978375,38.109812
+43,Malatya,Dogansehir,60,38.12555,37.86976
+44,Malatya,Dogansehir,150,38.133768,37.834294
+45,Malatya,Dogansehir,110,38.166968,37.851421
+46,Malatya,Akcadag,80,38.268407,37.938246
+47,Malatya,Dogansehir,150,38.102196,37.846627
+48,Malatya,Battalgazi,1250,38.353345,38.407668
+49,Malatya,Yesilyurt,350,38.336003,38.275503
+50,Malatya,Battalgazi,450,38.366655,38.333183
+51,Malatya,Yesilyurt,742,38.386093,38.271948
+52,Malatya,Yesilyurt,750,38.33004,38.303779
+53,Malatya,Yesilyurt,400,38.295556,38.255613
+54,Malatya,Yesilyurt,140,38.04372,38.202331
+55,Malatya,Battalgazi,250,38.368245,38.341255
+56,Malatya,Darende,200,38.54975,37.501807
+57,Malatya,Yesilyurt,300,38.3655,38.3115
+58,Malatya,Dogansehir,200,38.0947,37.8736
+59,Malatya,Dogansehir,140,37.9316,37.9335
+60,Malatya,Dogansehir,100,38.1638,37.8531
+61,Malatya,Yesilyurt,400,38.325779,38.32781
+62,Osmaniye,Merkez,2009,37.049696,36.242271
+63,Sanliurfa,Haliliye,1084,37.163795,38.87003
+64,Hatay,Antakya,926,36.298649,36.196019
+65,Hatay,Antakya,202,36.289324,36.192442
+66,Hatay,Antakya,202,36.298029,36.199987
+67,Hatay,Antakya,592,36.304085,36.198435
+68,Hatay,Antakya,545,36.246285,36.18017
+69,Hatay,Antakya,441,36.246458,36.182118
+70,Hatay,Antakya,350,36.244342,36.171991
+71,Hatay,Antakya,492,36.271686,36.183836
+72,Hatay,Antakya,210,36.245788,36.167448
+73,Hatay,Antakya,200,36.239464,36.160047
+74,Hatay,Antakya,102,36.240278,36.166742
+75,Hatay,Antakya,896,36.269627,36.233691
+76,Hatay,Antakya,1000,36.270712,36.230096
+77,Hatay,Antakya,990,36.272362,36.233661
+78,Hatay,Antakya,1464,36.251069,36.153236
+79,Hatay,Antakya,43,36.245947,36.154722
+80,Hatay,Antakya,1200,36.249219,36.183958
+81,Hatay,Antakya,320,36.243,36.2443
+82,Hatay,Antakya,432,36.2442,36.2461
+83,Hatay,Antakya,88,36.245736,36.248853
+84,Hatay,Antakya,174,36.338663,36.196099
+85,Hatay,Antakya,314,36.338663,36.196099
+86,Hatay,Antakya,500,36.242114,36.163608
+87,Hatay,Antakya,120,36.32651,36.201414
+88,Hatay,Antakya,250,36.243895,36.148957
+89,Hatay,Antakya,313,36.228157,36.131213
+90,Hatay,Antakya,400,36.2431,36.1075
+91,Hatay,Antakya,200,36.236856,36.103336
+92,Hatay,Antakya,100,36.36529,36.222626
+93,Hatay,Antakya,879,36.242065,36.210077
+94,Hatay,Antakya,480,36.384352,36.247392
+95,Hatay,Antakya,100,36.23438,36.187197
+96,Hatay,Antakya,547,36.2424,36.1508
+97,Hatay,Antakya,256,36.245303,36.152629
+98,Hatay,Defne,70,36.211639,36.123802
+99,Hatay,Defne,100,36.184102,36.125161
+100,Hatay,Defne,250,36.217,36.1195
+101,Hatay,Defne,137,36.199715,36.118895
+102,Hatay,Defne,250,36.2218,36.1211
+103,Hatay,Defne,31,36.18967,36.13445
+104,Hatay,Samandag,76,36.094528,35.938982
+105,Hatay,Samandag,96,36.075395,35.968675
+106,Hatay,Samandag,158,36.082109,35.997844
+107,Hatay,Samandag,68,36.087881,36.006748
+108,Hatay,Samandag,120,36.087192,35.983061
+109,Hatay,Samandag,110,36.09718,35.93733
+110,Hatay,Samandag,50,36.0806,35.9497
+111,Hatay,Reyhanli,200,36.285356,36.588046
+112,Hatay,Kirikhan,500,36.516294,36.373214
+113,Hatay,Kirikhan,630,36.487302,36.340185
+114,Hatay,Kirikhan,300,36.484171,36.331872
+115,Hatay,Kirikhan,400,36.508046,36.344239
+116,Hatay,Kirikhan,118,36.483727,36.330742
+117,Hatay,Kirikhan,94,36.487132,36.367131
+118,Hatay,Kirikhan,49,36.482876,36.35476
+119,Hatay,Kirikhan,100,36.482062,36.328424
+120,Hatay,Kirikhan,500,36.48522,36.333459
+121,Hatay,Kirikhan,100,36.484637,36.332572
+122,Hatay,Kirikhan,128,36.489694,36.365391
+123,Hatay,Iskenderun,101,36.571931,36.1645
+124,Hatay,Iskenderun,200,36.576289,36.162288
+125,Hatay,Iskenderun,500,36.585837,36.145616
+126,Hatay,Iskenderun,200,36.583878,36.189946
+127,Hatay,Iskenderun,200,36.573179,36.160781
+128,Hatay,Iskenderun,250,36.587757,36.226476
+129,Hatay,Iskenderun,96,36.588132,36.178038
+130,Hatay,Iskenderun,500,36.581032,36.160474
+131,Hatay,Iskenderun,150,36.574681,36.156366
+132,Hatay,Iskenderun,345,36.5724,36.1489
+133,Hatay,Iskenderun,525,36.578775,36.148375
+134,Hatay,Iskenderun,300,36.574394,36.148917
+135,Hatay,Iskenderun,256,36.574681,36.156366
+136,Hatay,Arsuz,74,36.543277,36.108431
+137,Hatay,Hassa,200,36.804402,36.522497
+138,Hatay,Hassa,880,36.721402,36.509996
+139,Hatay,Belen,104,36.52829,36.153815
+140,Hatay,Belen,56,36.494192,36.191613
+141,Hatay,Payas,635,36.7544,36.1992
+142,Hatay,Payas,130,36.7565,36.1968
+143,Kahramanmaras,Dulkadiroglu,1474,37.518734,36.993774
+144,Kahramanmaras,Dulkadiroglu,2154,37.501972,37.004305
+145,Kahramanmaras,Dulkadiroglu,520,37.55778,36.934495
+146,Kahramanmaras,Dulkadiroglu,214,37.55583,36.932395
+147,Kahramanmaras,Onikisubat,600,37.604739,36.783815
+148,Kahramanmaras,Onikisubat,496,37.614123,36.79911
+149,Kahramanmaras,Afsin,802,38.22455,36.942579
+150,Kahramanmaras,Afsin,350,38.238796,36.919709
+151,Kahramanmaras,Andirin,100,37.52805908,36.28054746
+152,Kahramanmaras,Ekinozu,150,38.066153,37.197908
+153,Kahramanmaras,Ekinozu,30,38.0637,37.1859
+154,Kahramanmaras,Caglayancerit,58,38.190285,37.225091
+155,Kahramanmaras,Caglayancerit,106,37.749279,37.300013
+156,Kahramanmaras,Elbistan,100,38.1968,37.2255
+157,Kahramanmaras,Elbistan,155,38.19732,37.223835
+158,Kahramanmaras,Elbistan,869,38.188187,37.223963
+159,Kahramanmaras,Elbistan,979,38.1859,37.224394
+160,Kahramanmaras,Goksun,950,38.02567844,36.49641107
+161,Kahramanmaras,Nurhak,150,37.967527,37.51647
+162,Kahramanmaras,Nurhak,176,37.958892,37.448277
+163,Kahramanmaras,Nurhak,322,37.969412,37.470315
+164,Kahramanmaras,Nurhak,92,38.00968,37.310838
+165,Kahramanmaras,Nurhak,40,37.962026,37.44058
+166,Kahramanmaras,Pazarcik,1181,37.501357,37.321938
+167,Kahramanmaras,Pazarcik,289,37.489561,37.307155
+168,Kahramanmaras,Pazarcik,232,37.396913,37.140965
+169,Kahramanmaras,Pazarcik,1008,37.4711,37.2915
+170,Kahramanmaras,Türkoglu,486,37.3705,36.85855
+171,Kahramanmaras,Türkoglu,105,37.284685,36.785125
+172,Kahramanmaras,Türkoglu,112,37.263833,36.773475
+173,Kahramanmaras,Türkoglu,112,37.40808,36.88661
+174,Kahramanmaras,Elbistan,210,38.206107,37.209694
+175,Kahramanmaras,Elbistan,63,38.1884,37.2183
+176,Kahramanmaras,Dulkadiroglu,2934,37.574514,36.975827
+177,Kahramanmaras,Elbistan,50,38.1897,37.2187
+178,Kahramanmaras,Dulkadiroglu,182,37.5382,36.9718
+179,Kahramanmaras,Elbistan,83,38.194053,37.216588
+180,Kahramanmaras,Onikisubat,192,37.5914,36.8244
+181,Kahramanmaras,Dulkadiroglu,450,37.5776,36.9759
+182,Adiyaman,Merkez,1817,37.738611,38.235194
+183,Adiyaman,Merkez,2150,37.770111,38.327722
+184,Adiyaman,Merkez,291,37.733139,38.232361
+185,Adiyaman,Merkez,528,37.750861,38.219389
+186,Adiyaman,Merkez,1342,37.774167,38.327333
+187,Adiyaman,Merkez,1266,37.769444,38.231
+188,Adiyaman,Merkez,120,37.771639,38.320333
+189,Adiyaman,Merkez,173,37.770972,38.24225
+190,Adiyaman,Merkez,670,37.775833,38.235083
+191,Adiyaman,Merkez,316,37.776278,38.211778
+192,Adiyaman,Merkez,540,37.772639,38.230389
+193,Adiyaman,Merkez,238,37.774667,38.202583
+194,Adiyaman,Merkez,965,37.774715,38.231918
+195,Adiyaman,Merkez,1500,37.729083,38.239889
+196,Adiyaman,Celikhan,500,38.013056,38.219056
+197,Adiyaman,Tut,200,37.796333,37.903389
+198,Adiyaman,Besni,546,37.684194,37.828944
+199,Adiyaman,Golbasi,1000,37.780333,37.659222
+200,Adiyaman,Merkez,2588,37.73875,38.285389
+201,Adiyaman,Merkez,120,37.771806,38.321404
+202,Malatya,Battalgazi,130,38.37510417,38.42859782
+203,Malatya,Yesilyurt,450,38.33090164,38.22517791
+204,Malatya,Dogansehir,200,38.06209669,37.83389095
+205,Malatya,Dogansehir,200,38.06770057,37.78310003
+206,Malatya,Akcadag,50,38.36270421,38.06918927
+207,Malatya,Akcadag,70,38.41640436,37.9925433
+208,Osmaniye,Duzici,300,37.25439302,36.42939976
+209,Osmaniye,Kadirli,50,37.39049148,36.09321073
+210,Osmaniye,Bahce,0,37.2098994,36.56779969
+211,Osmaniye,Merkez,1000,37.13181107,36.21059982
+212,Osmaniye,Hasanbeyli,0,37.13110428,36.55457854
+213,Sanliurfa,Harran,1800,36.85742009,39.02538124
+214,Kahramanmaras,Onikisubat,126,37.59136896,36.82824417
+215,Adiyaman,Kahta,381,37.7959743,38.6122764
+216,Adiyaman,Merkez,350,37.77552156,38.23841896
+217,Adiyaman,Merkez,300,37.72942465,38.23620219
+218,Adiyaman,Merkez,150,37.73534738,38.21566983
+219,Adiyaman,Sincik,121,38.02148732,38.62050045
+220,Malatya,Yesilyurt,120,38.34633858,38.14957505
+221,Malatya,Yesilyurt,250,38.33793492,38.21320303
+222,Malatya,Yesilyurt,150,38.29980001,38.2955
+223,Hatay,Samandag,127,36.0197859,35.98196072
+224,Hatay,Defne,489,36.1616417,36.09827403
+225,Hatay,Defne,196,36.16934411,36.11251376
+226,Hatay,Defne,376,36.20262165,36.12279464
+227,Hatay,Samandag,124,36.10283035,35.98007014
+228,Hatay,Samandag,60,36.16110434,36.06499464
+229,Hatay,Samandag,87,36.07729133,35.95440536
+230,Hatay,Samandag,242,36.08159134,35.95281073
+231,Hatay,Samandag,190,36.14052767,36.07707427
+232,Hatay,Samandag,194,36.14123814,36.07763217
+233,Hatay,Kumlu,110,36.32990001,36.48391073
+234,Hatay,Kumlu,994,36.36500433,36.48298927
+235,Hatay,Iskenderun,311,36.57376856,36.15313866
+236,Hatay,Iskenderun,300,36.57328605,36.15105727
+237,Hatay,Iskenderun,480,36.58513016,36.14691073
+238,Hatay,Iskenderun,290,36.60250001,36.20027854
+239,Hatay,Iskenderun,200,36.58398708,36.14802682
+240,Hatay,Iskenderun,140,36.57400001,36.15511073
+241,Hatay,Hassa,230,36.79272149,36.53034291
+242,Hatay,Hassa,82,36.78376134,36.47311073
+243,Hatay,Belen,45,36.51980001,36.16347854
+244,Hatay,Iskenderun,365,36.57924045,36.20577233
+245,Hatay,Iskenderun,195,36.57865458,36.20574551
+246,Hatay,Arsuz,69,36.41731296,35.9063
+247,Hatay,Dortyol,400,36.8320043,36.22062146
+248,Hatay,Hassa,500,36.80648525,36.53209271
+249,Kahramanmaras,Dulkadiroglu,3020,37.53278967,36.95600241
+250,Adana,Saricam,1064,37.05259573,35.38230536
+251,Adana,Saricam,730,37.06488134,35.48482338
+252,Adana,Saricam,717,37.05863733,35.47051184
+253,Gaziantep,Sahinbey,1057,36.97316213,37.40892347
+254,Gaziantep,Yavuzeli,309,37.30983568,37.57581859
+255,Gaziantep,Araban,248,37.41622353,37.69190446
+256,Gaziantep,Karkamis,56,36.85873001,37.91548764
+257,Gaziantep,Oguzeli,207,36.96594201,37.53191064
+258,Gaziantep,Nizip,518,36.99144329,37.818599
+259,Malatya,Yesilyurt,140,38.31483081,38.2081794
+260,Hatay,Hassa,700,36.85113728,36.53577587
+261,Hatay,Dortyol,615,36.82997849,36.21442222
+262,Hatay,Antakya,479,36.21397358,36.1646414
+263,Hatay,Arsuz,836,36.38290114,35.91999394
+264,Hatay,Arsuz,438,36.38303502,35.92014951
+265,Hatay,Belen,568,36.52289386,36.14759693
+266,Hatay,Belen,435,36.52430163,36.16309952
+267,Hatay,Reyhanli,255,36.54660432,36.2997
+268,Hatay,Samandag,200,36.146513,36.04150536
+269,Hatay,Antakya,34,36.24828686,36.24716251
+270,Hatay,Antakya,100,36.2674367,36.16832752
+271,Hatay,Antakya,100,36.23449568,36.13121073
+272,Hatay,Kirikhan,110,36.48210001,36.35130364
+273,Hatay,Kirikhan,44,36.59429019,36.40895003
+274,Hatay,Kirikhan,20,36.5630957,36.3746
+275,Hatay,Altinozu,692,36.18455929,36.36574484
+276,Hatay,Antakya,190,36.22968132,36.32841699
+277,Hatay,Antakya,70,36.33360276,36.2048
+278,Hatay,Antakya,395,36.23302536,36.17276789
+279,Adiyaman,Merkez,30,37.7743044,38.20599908
+280,Adiyaman,Merkez,89,37.73887031,38.20707125
+281,Adiyaman,Merkez,195,37.76407825,38.32199264
+282,Adiyaman,Merkez,83,37.77316625,38.213728
+283,Hatay,Hassa,66,36.6561957,36.45250536
+284,Hatay,Kirikhan,66,36.63730001,36.41458927
+285,Hatay,Kirikhan,500,36.47349138,36.39011073
+286,Hatay,Altinozu,184,36.25190001,36.1149
+287,Hatay,Altinozu,650,36.25749135,36.11080536
+288,Hatay,Samandag,78,36.09726842,35.93765982
+289,Hatay,Kumlu,100,36.45523401,36.37601827
+290,Hatay,Yayladagi,303,35.90783722,36.05106974
+291,Hatay,Altinozu,92,36.12058118,36.24249464
+292,Malatya,Yesilyurt,2000,38.32250536,38.20334974
+293,Malatya,Yesilyurt,2000,38.38230421,38.25448391
+294,Malatya,Yesilyurt,300,38.33828318,38.22341558
+295,Malatya,Battalgazi,500,38.35548318,38.3525
+296,Malatya,Yesilyurt,500,38.330248,38.19258583
+297,Hatay,Antakya,94,36.26958271,36.22736245
+298,Hatay,Kirikhan,500,36.51201148,36.3719628
+299,Hatay,Samandag,124,36.09922748,35.97725918
+300,Hatay,Samandag,124,36.0969562,35.97738792
+301,Kahramanmaras,Türkoglu,83,37.25769574,36.77709464
+</div>
+    </body>
+</html>
